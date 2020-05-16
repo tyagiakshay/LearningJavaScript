@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>DOM-Manupulations-Example</title>
+        <script>
+            function login()
+            {
+                var q = document.getElementById("username").value;
+                var r = document.getElementById("password").value;
+
+                if(validateEmailFormatAndPasswordLenght(q,r))
+                {
+                    document.getElementById("label1").style.backgroundColor = "green";
+                    document.getElementById("label1").style.color = "white";
+                    document.getElementById("label1").hidden = false;
+                    document.getElementById("label1").innerText = "Valid Credentials";
+                }
+                else
+                {
+                    document.getElementById("label1").style.backgroundColor = "red";
+                    document.getElementById("label1").style.color = "white";
+                    document.getElementById("label1").hidden = false;
+                    document.getElementById("label1").innerText = "Invalid Credentials";
+
+                }
+            }
+            function validateEmailFormatAndPasswordLenght(ema, pas)
+            {
+                var regx = /^([a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]+)$/;
+                var passwordLenght = pas.length
+                if(regx.test(ema)&&(passwordLenght>6))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input id="username" class="login" type="text" placeholder="Enter here email"/>
+        <br></br>
+        <input id="password" class="login" type="password" placeholder="Enter here password">
+        <br></br>
+        <button id="login" onclick=login() type="button">Click to login</button>
+        <label id="label1" hidden=true></label>
+    </body>
+</html>
